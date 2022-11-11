@@ -6,12 +6,11 @@ const carritosRouter = express.Router()
 
 
     carritosRouter.get('/', async (req, res) => {
-        res.json((await carritosApi.getAll()).map(c => c.id))
+        res.json((await carritosApi.getAll()))
     })
 
     carritosRouter.post('/', async (req, res) => {
-        const cart = req.body;
-        res.json(await carritosApi.save(cart))
+        res.json(await carritosApi.save())
     })
 
     carritosRouter.delete('/:id', async (req, res) => {

@@ -33,17 +33,16 @@ class ContenedorArchivo{
 
     async save(obj){
         const objs = await this.getAll()
-
-        let newId
+        let newId 
         let timestamp = Date.now();
-        
         if(objs.length == 0){
             newId = 1
         }else{
-            newId = objs[objs.length -1].id + 1
+            newId = objs.length + 1;
         }
 
         const newObj = {...obj, id: newId, timestamp: timestamp}
+
         objs.push(newObj)
 
         try {
