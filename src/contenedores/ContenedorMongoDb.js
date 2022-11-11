@@ -1,13 +1,15 @@
 import mongoose from 'mongoose'
 import config from '../config.js'
-import { productoModel, carritoModel } from '../models/producto.model.js'
+import { productoModel } from '../models/producto.model.js'
+import { carritoModel } from '../models/carrito.model.js'
 
 await mongoose.connect(config.mongodb.connectionMongo)
 
 class ContenedorMongoDb {
 
     constructor(modelo) {
-        modelo = carrito ? this.modelo = productoModel : this.modelo = carritoModel        
+        console.log('modelo', modelo)
+        modelo == 'carrito' ? this.modelo = carritoModel : this.modelo =  productoModel      
     }
 
     async getById(id) {
@@ -46,6 +48,21 @@ class ContenedorMongoDb {
         }
     }
 
+    async modifyById(nuevoElem) {
+        try {
+            renameField(nuevoElem, 'id', '_id')
+            const { n, nModified } = await this.modelo.replaceOne({ '_id': nuevoElem._id}, nuevoElem)
+            if (n == 0 || nModified == 0) {
+                throw new Error('Error al actualizar: no encontrado')
+            } else {
+                renameField(nuevoElem, '_id', 'id')
+                removeField(nuevoElem, '__v')
+                return asPOJO(nuevoElem)
+            }
+        } catch (error) {
+            throw new Error(`Error al actualizar: ${error}`)
+        }
+    }
 
 
     async delete(id) {
