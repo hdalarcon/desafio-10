@@ -27,7 +27,7 @@ const carritosRouter = express.Router()
         const carrito = await carritosApi.getById(req.params.id)
         const producto = await productosApi.getById(req.body.id)
         carrito.productos.push(producto)
-        const result =await carritosApi.modifById(carrito)
+        const result =await carritosApi.modifyById(carrito)
         res.json(result);
     })
     
@@ -37,7 +37,7 @@ const carritosRouter = express.Router()
         const index = carrito.productos.findIndex(p => p.id == req.params.idProd)
         if(index != -1){
             carrito.productos.splice(index,1)
-            await carritosApi.modifById(carrito)
+            await carritosApi.modifyById(carrito)
         }
         res.end()
     })

@@ -53,7 +53,7 @@ class ContenedorArchivo{
 
     }
 
-    async modifById(obj){
+    async modifyById(obj){
         const objs = await this.getAll()
         const index = objs.findIndex(o => o.id == obj.id)
         if(index == -1){

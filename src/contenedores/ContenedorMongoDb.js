@@ -1,19 +1,20 @@
 import mongoose from 'mongoose'
 import config from '../config.js'
-import { productoModel } from '../models/producto.model.js'
+import { productoModel, carritoModel } from '../models/producto.model.js'
 
 await mongoose.connect(config.mongodb.connectionMongo)
 
 class ContenedorMongoDb {
 
-    constructor() {
+    constructor(modelo) {
+        modelo = carrito ? this.modelo = productoModel : this.modelo = carritoModel        
     }
 
     async getById(id) {
         try {
-            const doc = await productoModel.find({ '_id': id }, { __v: 0 })
+            const doc = await this.modelo.find({ '_id': id }, { __v: 0 })
             if (doc.length == 0 || doc == undefined) {
-                const docs = await productoModel.find({})
+                const docs = await this.modelo.find({})
                 return docs
             } else {
                 return doc
@@ -25,7 +26,7 @@ class ContenedorMongoDb {
 
     async getAll() {
         try {
-            let docs = await productoModel.find({})
+            let docs = await this.modelo.find({})
             return docs;
         } catch (error) {
             console.log(error);
@@ -37,7 +38,7 @@ class ContenedorMongoDb {
 
     async save(object) {
         try {
-            const newProducto = new productoModel(object) 
+            const newProducto = new this.modelo(object) 
             return await newProducto.save()
         } catch (error) {
             console.log(error);
@@ -60,7 +61,7 @@ class ContenedorMongoDb {
     
     async deleteAll() {
         try {
-            await productoModel.deleteMany({})
+            await this.modelo.deleteMany({})
         } catch (error) {
             throw new Error(`Error al borrar ${error}`)
         }

@@ -42,8 +42,10 @@ class ContendorFirebase{
 
     async save(nuevoElem) {
         try {
-            const guardado = await this.coleccion.add(nuevoElem)
-            return { ...nuevoElem, id: guardado.id }
+            let timestamp = Date.now();
+            let nuevoElemento = {...nuevoElem, timestamp: timestamp}
+            const guardado = await this.coleccion.add(nuevoElemento)
+            return { ...nuevoElem, id: guardado.id, timestamp: timestamp }
         } catch (error) {
             throw new Error(`Error al guardar: ${error}`)
         }
