@@ -58,5 +58,15 @@
     "stock": "100",
     "id": 6,
     "timestamp": 1668123131448
+  },
+  {
+    "nombre": "Remera",
+    "descripcion": "Remera Nirvana",
+    "codigo": "1555454",
+    "thumbnail": "http://d3ugyf2ht6aenh.cloudfront.net/stores/029/842/products/nirvana1-2d1bbed349758198e516166141022282-640-0.jpg",
+    "price": "3600",
+    "stock": "20",
+    "id": 7,
+    "timestamp": 1668176264220
   }
 ]

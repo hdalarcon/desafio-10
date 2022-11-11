@@ -1,10 +1,12 @@
+import 'dotenv/config'
+
 export default{
     port: process.env.PORT || 8080,
     fileSystem:{
         path: './DB'
     },
     mongodb:{
-        connection: process.env.DB_URL_MONGO || 'mongodb://localhost/ecommerce'
+        connectionMongo: process.env.DB_URL_MONGO || 'mongodb+srv://cdmhda:<OAOiuYy8JfHvkZVM>@cluster0.6exwyqf.mongodb.net/ecommerce?retryWrites=true&w=majority'
     },
     firebase: {
         "type": "service_account",

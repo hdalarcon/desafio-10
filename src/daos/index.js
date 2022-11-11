@@ -16,6 +16,14 @@ switch (process.env.PERS) {
         carritosDao = new CarritosDaoFirebase
     default:
         break;
+
+    case 'mongodb':
+        const { default: ProductosDaoMongoDb } = await import('./productos/ProductosDaoMongoDb.js')
+        const { default: CarritosDaoMongoDb } = await import('./carritos/CarritosDaoMongoDb.js')
+
+        productosDao = new ProductosDaoMongoDb()
+        carritosDao = new CarritosDaoMongoDb()
+        break    
 }
 
 export { productosDao, carritosDao }
