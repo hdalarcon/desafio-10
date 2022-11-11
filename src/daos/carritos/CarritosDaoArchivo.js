@@ -8,6 +8,7 @@ class CarritosDaoArchivo extends ContenedorArchivo {
     async save(carrito = { productos: [] } ){
         return super.save(carrito)
     }
+
 }
 
 export default CarritosDaoArchivo

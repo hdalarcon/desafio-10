@@ -27,9 +27,10 @@ const carritosRouter = express.Router()
         const carrito = await carritosApi.getById(req.params.id)
         const producto = await productosApi.getById(req.body.id)
         carrito.productos.push(producto)
-        await productosApi.modifById(carrito)
-        res.end()
+        const result =await carritosApi.modifById(carrito)
+        res.json(result);
     })
+    
 
     carritosRouter.delete('/:id/productos/:idProd', async (req, res) => {
         const carrito = await carritosApi.getById(req.params.id)

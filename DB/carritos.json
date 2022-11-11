@@ -1,17 +1,28 @@
 [
   {
-    "productos": [],
+    "productos": [
+      {
+        "nombre": "Remera",
+        "descripcion": "Remera AC DC",
+        "codigo": "15154545",
+        "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_620276-MLA50865996631_072022-O.webp",
+        "price": "4500",
+        "stock": "25",
+        "id": 1,
+        "timestamp": 1668193425176
+      },
+      {
+        "nombre": "Remera",
+        "descripcion": "Remera Nirvana",
+        "codigo": "15154560",
+        "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_620276-MLA50865996631_072022-O.webp",
+        "price": "4570",
+        "stock": "100",
+        "id": 2,
+        "timestamp": 1668193447033
+      }
+    ],
     "id": 1,
-    "timestamp": 1668188069651
-  },
-  {
-    "productos": [],
-    "id": 2,
-    "timestamp": 1668188398078
-  },
-  {
-    "productos": [],
-    "id": 3,
-    "timestamp": 1668188402946
+    "timestamp": 1668195095606
   }
 ]

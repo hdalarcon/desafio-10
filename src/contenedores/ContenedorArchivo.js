@@ -20,7 +20,6 @@ class ContenedorArchivo{
     async getById(id){
         const objs = await this.getAll()
         const busca = objs.find(o => o.id == id)
-
         let result
 
         if(busca != undefined || busca != null){
